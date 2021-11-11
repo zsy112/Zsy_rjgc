@@ -1,0 +1,39 @@
+import requests
+import re
+import parsel
+import csv
+response = requests.get(url=url, headers=headers)
+lis = re.findall('"jobid":"(\d+)"', response.text)
+for li in lis:
+    page_url = 'https://jobs.51job.com/beijing-hdq/{}.html?s=01&t=0'.format(li)
+f = open('招聘.csv', mode='a', encoding='utf-8', newline='')
+csv_writer = csv.DictWriter(f, fieldnames=['标题', '地区', '工作经验', '学历', '薪资', '福利', '招聘人数', '发布日期'])
+csv_writer.writeheader()
+response = requests.get(url=page_url, headers=headers)
+response.encoding = response.apparent_encoding
+selector = parsel.Selector(response.text)
+title = selector.css('.cn h1::text').get()      # 标题
+salary = selector.css('div.cn strong::text').get()       # 薪资
+welfare = selector.css('.jtag div.t1 span::text').getall()       # 福利
+welfare_info = '|'.join(welfare)
+data_info = selector.css('.cn p.msg.ltype::attr(title)').get().split('  |  ')
+area = data_info[0]         # 地区
+work_experience = data_info[1]      # 工作经验
+educational_background = data_info[2]       # 学历
+number_of_people = data_info[3]     # 招聘人数
+release_date = data_info[-1].replace('发布', '')     # 发布日期
+all_info_list = selector.css('div.tCompany_main > div:nth-child(1) > div p span::text').getall()
+all_info = '\n'.join(all_info_list)
+dit = {
+    '标题': title,
+    '地区': area,
+    '工作经验': work_experience,
+    '学历': educational_background,
+    '薪资': salary,
+    '福利': welfare_info,
+    '招聘人数': number_of_people,
+    '发布日期': release_date,
+}
+csv_writer.writerow(dit)
+with open('招聘信息.txt', mode='a', encoding='utf-8') as f:
+    f.write(all_info)
