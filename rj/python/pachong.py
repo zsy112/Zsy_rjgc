@@ -16,9 +16,9 @@ for a in list:
 f.write('\n')
 
 
-for i in range(1, 1000):
+for i in range(1, 10):
     print("正在爬取第" + str(i) + "页数据")
-    url0 = "https://search.51job.com/list/120000,000000,0000,00,2,99,+,2,"
+    url0 = "https://search.51job.com/list/000000,000000,0000,00,9,99,Java%25E5%25BC%2580%25E5%258F%2591%25E5%25B7%25A5%25E7%25A8%258B%25E5%25B8%2588,2,"
     url_end = ".html?lang=c&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&ord_field=0&dibiaoid=0&line=&welfare="
     url = url0 + str(i) + url_end
     res = requests.get(url=url, headers=headers)
