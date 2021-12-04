@@ -1,11 +1,26 @@
 * { margin: 0; padding: 0; }
 html { height: 100%; }
 
-body { height: 100%; background: #fff url(home.jpg) 50% 50% no-repeat; background-size: cover;}
+body { margin: 0;background: transparent;}
+.video{position: fixed;
 
-.dowebok { position: absolute; left: 50%; top: 50%; width: 430px; height: 550px; margin: -300px 0 0 -215px; border: 1px solid #fff; border-radius: 20px; overflow: hidden;}
-
-.logo { width: 104px; height: 104px; margin: 50px auto 80px; background: url(home.jpg) 0 0 no-repeat; }
+    right: 0;
+    
+    top: 0;
+    
+    min-width: 100%;
+    
+    min-height: 100%;
+    
+    width: 60%;
+    
+    height: auto;
+    
+    z-index: -100;
+    
+    background-size: cover;}
+.biaotou{color: white; margin: 10px auto 30px;}
+.dowebok { position: absolute; left: 87%; top: 6%; width: 400px; height: 500px; margin: -300px 0 0 -215px;  overflow: hidden;}
 
 .form-item { position: relative; width: 360px; margin: 0 auto; padding-bottom: 30px;}
 
@@ -13,21 +28,19 @@ body { height: 100%; background: #fff url(home.jpg) 50% 50% no-repeat; backgroun
 
 .form-item button { width: 360px; height: 50px; border: 0; border-radius: 25px; font-size: 18px; color: #1f6f4a; outline: none; cursor: pointer; background-color: #fff; }
 
-#username { background: url(home.jpg) 20px 14px no-repeat; }
+#username { background: url(./积分数据.mp4) 20px 14px no-repeat; }
 
-#password { background: url(home.jpg) 23px 11px no-repeat; }
+#password { background: url(./积分数据.mp4) 23px 11px no-repeat; }
 
 .tip { display: none; position: absolute; left: 20px; top: 52px; font-size: 14px; color: #f50; }
-
-.reg-bar { width: 360px; margin: 20px auto 0; font-size: 14px; overflow: hidden;}
 
 .reg-bar a { color: #fff; text-decoration: none; }
 
 .reg-bar a:hover { text-decoration: underline; }
 
-.reg-bar .reg { float: left; }
+.reg-bar .reg { position: relative; left: 30%;}
 
-.reg-bar .forget { float: right; }
+.reg-bar .forget { position: relative; left: 40%; }
 
 .dowebok ::-webkit-input-placeholder { font-size: 18px; line-height: 1.4; color: #fff;}
 
